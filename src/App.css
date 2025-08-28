@@ -1,0 +1,110 @@
+/* Attendance Tracking Application Styles */
+
+/* Root container optimized for attendance app */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Attendance-specific animations */
+@keyframes attendance-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Utility classes for attendance app */
+.attendance-pulse {
+  animation: attendance-pulse 2s ease-in-out infinite;
+}
+
+.slide-in-up {
+  animation: slide-in-up 0.3s ease-out;
+}
+
+.fade-in {
+  animation: fade-in 0.2s ease-in;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    hsl(var(--muted)) 25%, 
+    hsl(var(--muted) / 0.5) 50%, 
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Attendance status indicators */
+.status-present {
+  color: hsl(var(--success));
+}
+
+.status-absent {
+  color: hsl(var(--destructive));
+}
+
+.status-duty-leave {
+  color: hsl(var(--warning));
+}
+
+/* Progress bar enhancements */
+.progress-bar {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Focus improvements for accessibility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+/* Print styles for reports */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
